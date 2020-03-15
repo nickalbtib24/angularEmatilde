@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LandingPageComponent implements OnInit {
 
-  private campaigns: any = [];
+  public campaigns: any = [];
   constructor(
     private Rest: PrincipalService,
     private Token: TokenService,

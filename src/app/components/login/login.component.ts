@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   };
 
   public dialogRef: MatDialogRef<ProgressSpinnerDialogComponent>;
-  public error = [];
+  public error: any = [];
   public success = '';
 
   constructor(
@@ -55,8 +55,8 @@ export class LoginComponent implements OnInit {
      const observable = new Observable(this.myObservable);
      this.showProgressSpinnerUntilExecuted(observable);
      this.Principal.login(this.form).subscribe(
-     data => this.handleResponse(data),
-     error => this.handleError(error)
+     (data: any) => this.handleResponse(data),
+     (error: any) => this.handleError(error)
    );
   }
 
@@ -77,7 +77,6 @@ export class LoginComponent implements OnInit {
     console.log(error.error);
     this.error = error.error;
     this.dialogRef.close();
-
   }
 
   public myObservable(observer) {

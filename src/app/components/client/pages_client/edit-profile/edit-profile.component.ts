@@ -10,7 +10,7 @@ import { PrincipalService } from 'src/app/services/principal.service';
 })
 export class EditProfileComponent implements OnInit {
 
-  private user: any = {};
+  public user: any = {};
   public form = {
     id: null,
     nombre_usuario: null,

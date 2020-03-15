@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ClientsComponent implements OnInit {
 
-  private clients = []
+  public clients: any = [];
   constructor(
     private Principal:PrincipalService,
     private Router:Router

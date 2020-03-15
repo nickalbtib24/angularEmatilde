@@ -9,7 +9,7 @@ import { PrincipalService } from 'src/app/services/principal.service';
 })
 export class CreateCampaignComponent implements OnInit {
 
-  public form = {
+  public form: any = {
     nombre_campana: null,
     tipo_campana: null,
     user_id: null,
@@ -19,15 +19,15 @@ export class CreateCampaignComponent implements OnInit {
     expected_budget: null,
     expected_link_clicks: null
   };
-  public tipoUsuarios = null;
+  public tipoUsuarios: any = null;
 
-  public response = [];
+  public response: any[] = [];
 
-  public error = {lesser: ''};
+  public error: any = {lesser: ''};
 
-  public tipoCampanas;
+  public tipoCampanas: any;
 
-  public clients;
+  public clients: any;
 
   public buttonDisabled: boolean;
 
@@ -67,7 +67,7 @@ export class CreateCampaignComponent implements OnInit {
     );
   }
 
-  public compareTwoDates() {
+  public compareTwoDates(event) {
     const date1 = new Date(this.form.fecha_inicio_campana);
     const date2 = new Date(this.form.fecha_terminacion_campana);
     if (date2 < date1) {

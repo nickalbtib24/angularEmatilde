@@ -14,7 +14,7 @@ export class WatchAssetsComponent implements OnInit {
     private Rest: PrincipalService,
     private Rou: ActivatedRoute
   ) { }
-  private assets: any;
+  public assets: any;
   ngOnInit() {
     this.getAssetsByCampaign(this.Rou.snapshot.paramMap.get('id'));
     this.getImages(1);

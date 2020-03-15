@@ -10,10 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddInformCampaignComponent implements OnInit {
 
-  private campaign = null
-  public errors = []
-  private success = []
-  public inform = {
+  private campaign: any = null;
+  public errors: any = [];
+  private success: any = [];
+  public inform: any = {
     id_campana: null,
     reach: null,
     budget: null,
@@ -32,7 +32,7 @@ export class AddInformCampaignComponent implements OnInit {
     date: null,
     state : '100'
 
-  } 
+  };
 
   constructor(
     private Router:Router,

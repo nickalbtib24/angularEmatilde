@@ -13,7 +13,7 @@ import { ExecuteFunctionService } from 'src/app/services/execute-function.servic
 })
 export class SignupComponent implements OnInit {
 
-  public form = {
+  public form: any = {
     nombre_usuario: null,
     apellido_usuario: null,
     email: null,
@@ -22,13 +22,12 @@ export class SignupComponent implements OnInit {
     empresa_usuario: null,
     telefono_usuario: null,
     tipo_cliente: null,
-
   };
-  public tipoUsuarios = null;
+  public tipoUsuarios: any = null;
 
-  public response = [];
+  public response: any = [];
 
-  public error = [];
+  public error: any = [];
 
   public dialogRef: MatDialogRef<ProgressSpinnerDialogComponent>;
 
@@ -41,7 +40,7 @@ export class SignupComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.Principal.getTipoClientes().subscribe((data: any[]) => {
+    this.Principal.getTipoClientes().subscribe((data: any) => {
       console.log(data);
       this.tipoUsuarios = data;
     });
