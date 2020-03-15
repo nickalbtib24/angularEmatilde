@@ -87,6 +87,8 @@ export class SignupComponent implements OnInit {
   }
 
   public ngOnDestroy(): void {
+    const observable = new Observable(this.myObservable);
+    this.showProgressSpinnerUntilExecuted(observable);
     this.dialogRef.close();
   }
 

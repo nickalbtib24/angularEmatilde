@@ -94,6 +94,8 @@ export class LoginComponent implements OnInit {
   }
 
   public ngOnDestroy(): void {
+    const observable = new Observable(this.myObservable);
+    this.showProgressSpinnerUntilExecuted(observable);
     this.dialogRef.close();
   }
 
@@ -101,7 +103,6 @@ export class LoginComponent implements OnInit {
 
       this.ExecuteFunction.subsVar = this.ExecuteFunction.
       invokeLogInComponentMessage.subscribe((name: string) => {
-        console.log('hol');
       });
   }
 
