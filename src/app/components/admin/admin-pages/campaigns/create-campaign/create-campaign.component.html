@@ -1,0 +1,95 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sign Up Form by Colorlib</title>
+
+  <!-- Font Icon -->
+  <link rel="stylesheet" href="../assets/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+</head>
+<body>
+
+  <div class="main">
+      <section class="signup">
+          <div class="container">
+              <div class="signup-content">
+                  <form #signUpForm=ngForm (ngSubmit)="onSubmit()">
+                      <h2 class="form-title">Create campaign</h2>
+                      <div class="alert alert-danger" [hidden] = "!error.nombre_campana">
+                        {{error.nombre_campana}}
+                    </div>
+                      <div class="form-group">
+                        <label for="nombre_campana">Campaing Name</label>
+                        <input class="form-control" id="nombre_campana" [(ngModel)]="form.nombre_campana" name="nombre_campana">
+                      </div>
+                      <div class="alert alert-danger" [hidden] = "!error.negocio_campana">
+                        {{error.negocio_campana}}
+                    </div>
+                      <div class="form-group">
+                        <label for="negocio_campana">Business Type</label>
+                        <input class="form-control" id="negocio_campana" [(ngModel)]="form.negocio_campana" name="negocio_campana">
+                      </div>
+                      <div class="alert alert-danger" [hidden] = "!error.tipo_campana">
+                        {{error.tipo_campana}}
+                    </div>
+                    <div class="form-group">
+                      <label for="negocio_campana">Expected Budget </label>
+                      <input class="form-control" id="expected_budget" [(ngModel)]="form.expected_budget" name="expected_budget">
+                    </div>
+                    <div class="alert alert-danger" [hidden] = "!error.expected_budget">
+                      {{error.expected_budget}}
+                    </div>
+                    <div class="form-group">
+                      <label for="negocio_campana">Expected Link Clicks </label>
+                      <input class="form-control" id="expected_link_clicks" [(ngModel)]="form.expected_link_clicks" name="expected_link_clicks">
+                    </div>
+                    <div class="alert alert-danger" [hidden] = "!error.expected_link_clicks">
+                      {{error.expected_link_clicks}}
+                    </div>
+                      <div class="form-group">
+                        <label for="tipo_campana">Campaing Type</label>
+                        <select class="form-control" id="tipo_campana" [(ngModel)]="form.tipo_campana" name="tipo_campana">
+                          <option *ngFor="let tipo of tipoCampanas" [value] = "tipo.id">{{tipo.nombre_tipo_campana}}</option>
+                        </select>
+                      </div>
+                      <div class="alert alert-danger" [hidden] = "!error.user_id">
+                        {{error.user_id}}
+                    </div>
+                      <div class="form-group">
+                        <label for="usuario">Client</label>
+                        <select class="form-control" id="usuario" [(ngModel)]="form.user_id" name="user" >
+                          <option *ngFor="let client of clients" [value] = "client.id">{{client.email}}</option>
+                        </select>
+                      </div>
+                      <div class="alert alert-danger" [hidden] = "!error.fecha_inicio_campana">
+                        {{error.fecha_inicio_campana}}
+                    </div>
+                      <div class="form-group">
+                        <label for="negocio_campana">Start Date</label>
+                        <input type="date" class="form-input" name="last_name"  [(ngModel)]="form.fecha_inicio_campana" id="fecha_inicio" placeholder="Pick a date of start"/>
+                      </div>
+                      <div class="alert alert-danger" [hidden] = "!error.fecha_terminacion_campana">
+                        {{error.fecha_terminacion_campana}}
+                      </div>
+                      <div class="alert alert-danger" [hidden] = "!error.lesser">
+                        {{error.lesser}}
+                      </div>
+                      <div class="form-group">
+                        <label for="negocio_campana">Due Date</label>
+                        <input type="date" class="form-input" name="last_name"  [(ngModel)]="form.fecha_terminacion_campana" (change)="compareTwoDates($event)" id="fecha_inicio" placeholder="Pick a date of end"/>
+                      </div>
+                      <div class="form-group">
+                          <input [disabled] = "buttonDisabled" type="submit" name="submit" id="submit" class="form-submit" value="Create"/>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </section>
+
+  </div>
+
+  <!-- JS -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->

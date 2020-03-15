@@ -1,0 +1,134 @@
+
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header">
+            <strong>Campaign Dashboard </strong>
+            <small>Form</small>
+          </div>
+          <div class="card-body">
+            <form #signUpForm=ngForm (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="company">Date</label>
+                <div class="alert alert-danger" [hidden] = "!errors.date">
+                    {{errors.date}}
+                  </div>
+                <input type="date" class="form-control" name ="date" [(ngModel)]="inform.date" placeholder="yyyy-MM-dd">
+              </div>
+              <div class="row">
+                <div class="form-group col-sm-6">
+                  <label for="city">Reach</label>
+                  <div class="alert alert-danger" [hidden] = "!errors.reach">
+                      {{errors.reach  }}
+                    </div>
+                  <input type="number" class="form-control" name="reach"   [(ngModel)]="inform.reach" placeholder="Reach">
+                </div>
+                <div class="form-group col-sm-6">
+                  <label for="postal-code">Budget</label>
+                  <div class="alert alert-danger" [hidden] = "!errors.budget">
+                      {{errors.budget  }}
+                    </div>
+                  <input type="number" class="form-control" name="budget"   [(ngModel)]="inform.budget" placeholder="Budget">
+                </div>
+              </div><!--/.row-->
+              <div class="row">
+                <div class="form-group col-sm-6">
+                  <label for="city">Results</label>
+                  <div class="alert alert-danger" [hidden] = "!errors.result">
+                      {{errors.result  }}
+                    </div>
+                  <input type="number" class="form-control" name="results"   [(ngModel)]="inform.result" placeholder="Results">
+                </div>
+                <div class="form-group col-sm-6">
+                  <label for="postal-code">Impressions</label>
+                  <div class="alert alert-danger" [hidden] = "!errors.impressions">
+                      {{errors.impressions  }}
+                    </div>
+                  <input type="number" class="form-control" name="impressions" [(ngModel)]="inform.impressions"  placeholder="Impressions">
+                </div>
+              </div><!--/.row-->
+              <div class="row">
+                <div class="form-group col-sm-6">
+                  <label for="city">Estimated Add Recall</label>
+                  <div class="alert alert-danger" [hidden] = "!errors.estimated_add_recall">
+                      {{errors.estimated_add_recall  }}
+                    </div>
+                  <input type="number" class="form-control" name="add-recall" [(ngModel)]="inform.estimated_add_recall"  placeholder="Add Recall">
+                </div>
+                <div class="form-group col-sm-6">
+                  <label for="postal-code">Amount Spent</label>
+                  <div class="alert alert-danger" [hidden] = "!errors.ammount_spent">
+                      {{errors.ammount_spent  }}
+                    </div>
+                  <input type="number" class="form-control" name="amount-spent" [(ngModel)]="inform.ammount_spent"  placeholder="Amount Spent">
+                </div>
+              </div><!--/.row-->
+              <div class="row">
+                <div class="form-group col-sm-6">
+                  <label for="city">Frequency</label>
+                  <div class="alert alert-danger" [hidden] = "!errors.frequency">
+                      {{errors.frequency  }}
+                    </div>
+                  <input type="number" class="form-control" name="frequency" [(ngModel)]="inform.frequency"  placeholder="Frequency">
+                </div>
+                <div class="form-group col-sm-6">
+                  <label for="postal-code">Video Cliks</label>
+                  <div class="alert alert-danger" [hidden] = "!errors.video_clicks">
+                      {{errors.video_clicks  }}
+                    </div>
+                  <input type="number" class="form-control" name="video-clicks" [(ngModel)]="inform.video_clicks"  placeholder="Video Clicks">
+                </div>
+              </div><!--/.row-->
+              <div class="row">
+                <div class="form-group col-sm-6">
+                  <label for="city">Post Reaction</label>
+                  <div class="alert alert-danger" [hidden] = "!errors.post_reaction">
+                      {{errors.post_reaction  }}
+                    </div>
+                  <input type="number" class="form-control" name="post-reaction" [(ngModel)]="inform.post_reaction"  placeholder="Post Reaction">
+                </div>
+                <div class="form-group col-sm-6">
+                  <label for="postal-code">Carrousel Clicks</label>
+                  <div class="alert alert-danger" [hidden] = "!errors.carrousel_clicks">
+                    {{errors.carrousel_clicks  }}
+                  </div>
+                  <input type="number" class="form-control" name="carrousel-clicks" [(ngModel)]="inform.carrousel_clicks"  placeholder="Carrousel Clicks">
+                </div>
+              </div><!--/.row-->
+              <div class="row">
+                <div class="form-group col-sm-6">
+                  <label for="city">Link Clicks</label>
+                  <div class="alert alert-danger" [hidden] = "!errors.link_clicks">
+                    {{errors.link_clicks  }}
+                  </div>
+                  <input type="number" class="form-control" name="link-clicks" [(ngModel)]="inform.link_clicks"  placeholder="Link Clicks">
+                </div>
+                <div class="form-group col-sm-6">
+                  <label for="city">Bid Strategy</label>
+                  <div class="alert alert-danger" [hidden] = "!errors.bid_strategy">
+                    {{errors.bid_strategy  }}
+                  </div>
+                  <input type="text" class="form-control" name="bid-strategy"  [(ngModel)]="inform.bid_strategy" placeholder="Bid Strategy">
+                </div>
+              </div><!--/.row-->
+              <div class="row">
+                
+                <div class="form-group col-sm-6">
+                  <label for="postal-code">Last Edit</label>
+                  <div class="alert alert-danger" [hidden] = "!errors.ultima_actualizacion">
+                    {{errors.ultima_actualizacion  }}
+                  </div>
+                  <input type="date" class="form-control" name="last-edit" [(ngModel)]="inform.fecha_ultima_actualizacion" placeholder="DD/MM/YYYY">
+                </div>
+              </div><!--/.row-->
+              
+              <div class="row">
+              <button type="submit" class="btn btn-block btn-outline-primary active" aria-pressed="true">Update Dashboard</button>
+              </div> <!--Row-->
+            </form>
+            </div>
+          </div>
+        </div><!--/.col-->
+      </div><!--/.row-->
+  </div>

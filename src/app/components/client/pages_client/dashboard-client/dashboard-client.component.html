@@ -1,0 +1,183 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-info">
+        <div class="card-body pb-0">
+          <div>Actions On Page</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:100px;">
+          <canvas baseChart class="chart"
+          [datasets]="ActionsOnPageData"
+          [labels]="ActionsOnPageLabels"
+          [options]="ActionsOnPageOptions"
+          [colors]="ActionsOnPageColours"
+          [legend]="ActionsOnPageLegend"
+          [chartType]="ActionsOnPageType"></canvas>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-primary">
+        <div class="card-body pb-0">
+          <div>Page Views</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:100px;">
+          <canvas baseChart class="chart"
+                  [datasets]="PageViewsData"
+                  [labels]="PageViewsLabels"
+                  [options]="PageViewsOptions"
+                  [colors]="PageViewsColours"
+                  [legend]="PageViewsLegend"
+                  [chartType]="PageViewsType"></canvas>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-warning">
+        <div class="card-body pb-0">
+          <div>Page followers</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:100px;">
+          <canvas baseChart class="chart"
+                  [datasets]="PageFollowersData"
+                  [labels]="PageFollowersLabels"
+                  [options]="PageFollowersOptions"
+                  [colors]="PageFollowersColours"
+                  [legend]="PageFollowersLegend"
+                  [chartType]="PageFollowersType"></canvas>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-danger">
+        <div class="card-body pb-0">
+          <div>Page Likes</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:100px;">
+          <canvas baseChart class="chart"
+          [datasets]="PageLikesData"
+          [labels]="PageLikesLabels"
+          [options]="PageLikesOptions"
+          [colors]="PageLikesColours"
+          [legend]="PageLikesLegend"
+          [chartType]="PageLikesType"></canvas>
+        </div>
+      </div>
+    </div><!--/.col-->
+  </div><!--/.row-->
+<!--Larga-->
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-5">
+          <h4 class="card-title mb-0">General Infor</h4>
+          <div class="small text-muted">November 2019</div>
+        </div><!--/.col-->
+      </div><!--/.row-->
+      <div class="chart-wrapper" style="height:300px;margin-top:40px;">
+        <canvas baseChart class="chart"
+        [datasets]="mainChartData"
+        [labels]="mainChartLabels"
+        [options]="mainChartOptions"
+        [colors]="mainChartColours"
+        [legend]="mainChartLegend"
+        [chartType]="mainChartType"></canvas>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="row text-center">
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <div class="text-muted">Likes</div>
+          <strong>29.703 Users (40%)</strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <div class="text-muted">Pageviews</div>
+          <strong>78.706 Views (60%)</strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md mb-sm-2 mb-0">
+          <div class="text-muted">New Users</div>
+          <strong>22.123 Users (80%)</strong>
+          <div class="progress progress-xs mt-2">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Shortie -->
+  <!--/.card-->
+  <div class="row">
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-info">
+        <div class="card-body pb-0">
+          <div>Post Reach</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:100px;">
+          <canvas baseChart class="chart"
+          [datasets]="PostReachData"
+          [labels]="PostReachLabels"
+          [options]="PostReachOptions"
+          [colors]="PostReachColours"
+          [legend]="PostReachLegend"
+          [chartType]="PostReachType"></canvas>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-primary">
+        <div class="card-body pb-0">
+          <div>Post Engagement</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:100px;">
+          <canvas baseChart class="chart"
+                  [datasets]="PostEngagementData"
+                  [labels]="PostEngagementLabels"
+                  [options]="PostEngagementOptions"
+                  [colors]="PostEngagementColours"
+                  [legend]="PostEngagementLegend"
+                  [chartType]="PostEngagementType"></canvas>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-warning">
+        <div class="card-body pb-0">
+          <div>Videos</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:100px;">
+          <canvas baseChart class="chart"
+                  [datasets]="VideosData"
+                  [labels]="VideosLabels"
+                  [options]="VideosOptions"
+                  [colors]="VideosColours"
+                  [legend]="VideosLegend"
+                  [chartType]="VideosType"></canvas>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-danger">
+        <div class="card-body pb-0">
+          <div>Page Previews</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:100px;">
+          <canvas baseChart class="chart"
+          [datasets]="PageViewersData"
+          [labels]="PageViewersLabels"
+          [options]="PageViewersOptions"
+          [colors]="PageViewersColours"
+          [legend]="PageViewersLegend"
+          [chartType]="PageViewersType"></canvas>
+        </div>
+      </div>
+    </div><!--/.col-->
+  </div><!--/.row-->
+  <!--Redes sociales-->
+
+</div><!--/.col-->

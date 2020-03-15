@@ -1,0 +1,91 @@
+<main>
+
+  <div class="animated fadeIn" style="padding: 1%;" >
+    <h3 style="text-align: center; padding-bottom: 1%;" >Dashboard Asset</h3>
+    <div class="row">
+      <div class="col-sm-6 col-lg-3">
+        <div class="card text-white bg-info">
+          <div class="card-body pb-0">
+            <div>Impressions</div>
+          </div>
+          <div class="chart-wrapper mt-3 mx-3" style="height:100px;">
+            <canvas baseChart class="chart"
+            [datasets]="BudgetData"
+            [labels]="BudgetLabels"
+            [options]="BudgetOptions"
+            [colors]="BudgetColours"
+            [legend]="BudgetLegend"
+            [chartType]="BudgetType"></canvas>
+          </div>
+        </div>
+      </div><!--/.col-->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card text-white bg-primary">
+          <div class="card-body pb-0">
+            <div>Cost Per Result</div>
+          </div>
+          <div class="chart-wrapper mt-3 mx-3" style="height:100px;">
+            <canvas baseChart class="chart"
+                    [datasets]="ResultData"
+                    [labels]="ResultLabels"
+                    [options]="ResultOptions"
+                    [colors]="ResultColours"
+                    [legend]="ResultLegend"
+                    [chartType]="ResultType"></canvas>
+          </div>
+        </div>
+      </div><!--/.col-->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card text-white bg-warning">
+          <div class="card-body pb-0">
+            <div>Amount Spent</div>
+          </div>
+          <div class="chart-wrapper mt-3 mx-3" style="height:100px;">
+            <canvas baseChart class="chart"
+                    [datasets]="ImpressionsData"
+                    [labels]="ImpressionsLabels"
+                    [options]="ImpressionsOptions"
+                    [colors]="ImpressionsColours"
+                    [legend]="ImpressionsLegend"
+                    [chartType]="ImpressionsType"></canvas>
+          </div>
+        </div>
+      </div><!--/.col-->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card text-white bg-danger">
+          <div class="card-body pb-0">
+            <div>Link Clicks</div>
+          </div>
+          <div class="chart-wrapper mt-3 mx-3" style="height:100px;">
+            <canvas baseChart class="chart"
+            [datasets]="EstimatedAddRecallData"
+            [labels]="EstimatedAddRecallLabels"
+            [options]="EstimatedAddRecallOptions"
+            [colors]="EstimatedAddRecallColours"
+            [legend]="EstimatedAddRecallLegend"
+            [chartType]="EstimatedAddRecallType"></canvas>
+          </div>
+        </div>
+      </div><!--/.col-->
+    </div><!--/.row-->
+
+    <div class="card" style="padding: 2%;">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-5">
+            <h4 class="card-title mb-0">Reach</h4>
+          </div><!--/.col-->
+        </div><!--/.row-->
+        <div class="chart-wrapper" style="height:300px;margin-top:40px;">
+          <canvas baseChart class="chart"
+          [datasets]="ReachData"
+          [labels]="ReachLabels"
+          [options]="ReachOptions"
+          [colors]="ReachColours"
+          [legend]="ReachLegend"
+          [chartType]="ReachType"></canvas>
+        </div>
+      </div>
+    </div>
+  </div><!--/.col-->
+  </main>

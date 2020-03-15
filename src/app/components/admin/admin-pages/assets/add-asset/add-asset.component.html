@@ -1,0 +1,76 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sign Up Form by Colorlib</title>
+
+  <!-- Font Icon -->
+  <link rel="stylesheet" href="../../../assets/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+</head>
+<body>
+
+  <div class="main">
+      <section class="signup">
+          <div class="container">
+              <div class="signup-content">
+                <h2 class="form-title">Add New Asset</h2>
+                <form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()" >
+                  <div class="form-group">
+                    <input type="text" class="form-control" formControlName="nombre_asset" placeholder="Name of the Asset"/>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" formControlName="descripcion_asset" placeholder="Description of the Asset"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="negocio_campana">Start Date</label>
+                    <input type="date" class="form-input" name="last_name"  formControlName="fecha_inicio_asset" id="fecha_inicio" placeholder="Pick a date of start"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="negocio_campana">Due Date</label>
+                    <input type="date" class="form-input" name="last_name"  formControlName="fecha_finalizacion_asset" id="fecha_inicio" placeholder="Pick a date of end"/>
+                  </div>
+                  <div class="form-group">
+                    <input type="file" name="fileAsset" (change)="onFileChange(fileInput.files)" accept="image/png, image/jpeg" #fileInput/>
+                    </div>
+                    <div class="col-3" hidden>
+                      <input class="input100" type="text" style="font-family:'Trebuchet MS', 
+                          'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" 
+                          placeholder="Upload your file" #path>
+                   </div>
+                    <div class="form-group">
+                      <input type="submit" name="submit" id="submit" class="form-submit" value="Upload"/>
+                  </div>
+                </form>
+              </div>
+          </div>
+      </section>
+
+  </div>
+
+  <!-- JS -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+<!--<div class="main">
+  <div class="border-m ">
+    <div class="main-1"><h1>Add New Asset</h1>
+      <h3> Select the file to upload </h3>
+    </div>
+    <div class="main-2">
+      <form [formGroup] = "uploadForm" (ngSubmit)="onSubmit(uploadForm.value)" >
+        <div class="form-group">
+          <input type="text" formControlName="nameAsset" class="form-control" placeholder="Name of the Asset"/>
+        </div>
+        <div class="form-group">
+          <input type="file" name="fileAsset" (change)="onSelectedFile($event)" />
+          </div>
+        <div class="form-group">
+          <button type="submit" class="button btn btn-outline-primary btn-lg btn-block">Upload</button>
+        </div>
+      </form>
+   </div>
+  </div>
+</div>-->
+

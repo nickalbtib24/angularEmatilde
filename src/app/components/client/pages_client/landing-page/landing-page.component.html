@@ -1,0 +1,43 @@
+
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container">
+      <div class="intro-text">
+        <div class="intro-lead-in">Welcome To Matilde Agency!</div>
+        <div class="intro-heading text-uppercase">This is your space</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Services -->
+  <section class="page-section" id="section">
+      <div class="container-table100">
+        <div class="wrap-table100">
+          <h2 class="section-heading text-uppercase">Your new campaigns</h2>
+          <div class="table100">
+            <table>
+              <thead>
+                <tr class="table100-head">
+                  <th class="column1">Campaign ID</th>
+                  <th class="column2">Name</th>
+                  <th class="column3">Campaign type</th>
+                  <th class="column4">Start Date</th>
+                  <th class="column5">Finish Date</th>
+                  <th class="column6">Budget</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr (click)= "clickEvent(campaign.id)" *ngFor="let campaign of campaigns">
+                    <td class="column1">{{campaign.id}}</td>
+                    <td class="column2">{{campaign.nombre_campana}}</td>
+                    <td class="column3">{{campaign.tipo_campana.nombre_tipo_campana}}</td>
+                    <td class="column4">{{campaign.fecha_inicio_campana}}</td>
+                    <td class="column5">{{campaign.fecha_terminacion_campana}}</td>
+                    <td class="column6">{{campaign.budget}}</td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  </section>
