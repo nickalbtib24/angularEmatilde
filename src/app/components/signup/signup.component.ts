@@ -87,6 +87,7 @@ export class SignupComponent implements OnInit {
   }
 
   public ngOnDestroy(): void {
+    this.dialogRef.close();
   }
 
 }
