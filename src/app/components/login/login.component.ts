@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
       this.Routers.navigateByUrl('/clients');
     }
     this.ExecuteFunction.onFirstComponentButtonClick();
-
+    this.dialogRef.close();
   }
 
   public handleError(error) {
