@@ -94,7 +94,6 @@ export class LoginComponent implements OnInit {
   }
 
   public ngOnDestroy(): void {
-    this.dialogRef.close();
   }
 
   ngOnInit() {

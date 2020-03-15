@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material';
 import { ChartsModule} from 'ng2-charts';
-
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
@@ -93,7 +93,7 @@ const MaterialComponents = [
     MatDialogModule,
     MatTooltipModule
   ],
-  providers: [ExecuteFunctionService],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
   entryComponents: [ProgressSpinnerDialogComponent],
 })
