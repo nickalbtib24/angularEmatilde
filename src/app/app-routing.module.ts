@@ -10,7 +10,6 @@ import { BeforeLoginService } from './services/before-login.service';
 import { AfterLoginService } from './services/after-login.service';
 import { AuthorizationAdminService } from './services/authorization-admin.service';
 import { AuthorizationClientService } from './services/authorization-client.service';
-import { DashboardClientComponent} from './components/client/pages_client/dashboard-client/dashboard-client.component';
 import { CampaignsClientComponent} from './components/client/pages_client/campaigns-client/campaigns-client.component';
 import { ProfileClientComponent} from './components/client/pages_client/profile-client/profile-client.component';
 import { AddCampaignComponent} from './components/client/pages_client/add-campaign/add-campaign.component';
@@ -59,12 +58,6 @@ const appRoutes: Routes = [
     path: 'user',
     component: DashboardAssetComponent,
     canActivate: [AfterLoginService]
-
-  },
-  {
-    path: 'dashboard-client',
-    component: DashboardClientComponent,
-    canActivate: [AfterLoginService, AuthorizationClientService]
 
   },
   {

@@ -21,7 +21,6 @@ import { ClientsComponent } from './components/admin/admin-pages/clients/clients
 import { AddCampaignComponent } from './components/client/pages_client/add-campaign/add-campaign.component';
 import { DashboardCampaignComponent } from './components/client/pages_client/dashboard-campaign/dashboard-campaign.component';
 import { CampaignsClientComponent } from './components/client/pages_client/campaigns-client/campaigns-client.component';
-import { DashboardClientComponent } from './components/client/pages_client/dashboard-client/dashboard-client.component';
 import { ProfileClientComponent } from './components/client/pages_client/profile-client/profile-client.component';
 import { ClientContainerComponent } from './components/client/client-container/client-container.component';
 import { AdminContainerComponent } from './components/admin/admin-container/admin-container.component';
@@ -62,7 +61,6 @@ const MaterialComponents = [
     AddCampaignComponent,
     ClientsComponent,
     CampaignsClientComponent,
-    DashboardClientComponent,
     ProfileClientComponent,
     ClientContainerComponent,
     AdminContainerComponent,
