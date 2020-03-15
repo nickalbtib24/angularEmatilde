@@ -14,37 +14,37 @@ list-type-ulli {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 300;
-  src: url("../../../../..//assets/fonts/montserrat/Montserrat-Light.ttf");
+  src: url("/assets/fonts/montserrat/Montserrat-Light.ttf");
   /* IE9 Compat Modes */ }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
-  src: url("../../../../../assets/fonts/montserrat/Montserrat-Regular.ttf");
+  src: url("/assets/fonts/montserrat/Montserrat-Regular.ttf");
   /* IE9 Compat Modes */ }
 @font-face {
   font-family: 'Montserrat';
   font-style: italic;
   font-weight: 400;
-  src: url("../../../../../assets/fonts/montserrat/Montserrat-Italic.ttf");
+  src: url("/assets/fonts/montserrat/Montserrat-Italic.ttf");
   /* IE9 Compat Modes */ }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
-  src: url("../../../../../assets/fonts/montserrat/Montserrat-Medium.ttf");
+  src: url("/assets/fonts/montserrat/Montserrat-Medium.ttf");
   /* IE9 Compat Modes */ }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
-  src: url("../../../../../assets/fonts/montserrat/Montserrat-SemiBold.ttf");
+  src: url("/assets/fonts/montserrat/Montserrat-SemiBold.ttf");
   /* IE9 Compat Modes */ }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
-  src: url("../../../../../assets/fonts/montserrat/Montserrat-Bold.ttf");
+  src: url("src/assets/fonts/montserrat/Montserrat-Bold.ttf");
 }
 @font-face {
   font-family: 'Montserrat';
@@ -133,7 +133,7 @@ body {
   color: #222;
   font-weight: 400;
   font-family: 'Montserrat';
-  background-image: url("../../../../../assets/images/signup/fondo-camp.jpg");
+  background-image: url("/assets/images/signup/fondo-camp.jpg");
   background-repeat: no-repeat;
   background-size: auto auto;
   -moz-background-size: cover;
