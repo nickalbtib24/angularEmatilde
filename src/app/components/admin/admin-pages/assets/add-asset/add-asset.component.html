@@ -18,17 +18,29 @@
                 <form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()" >
                   <div class="form-group">
                     <input type="text" class="form-control" formControlName="nombre_asset" placeholder="Name of the Asset"/>
+                    <div class="alert alert-danger" [hidden] = "!error.nombre_asset">
+                      {{error.nombre_asset }}
+                    </div>
                   </div>
                   <div class="form-group">
                     <input type="text" class="form-control" formControlName="descripcion_asset" placeholder="Description of the Asset"/>
+                    <div class="alert alert-danger" [hidden] = "!error.descripcion_asset">
+                      {{error.descripcion_asset }}
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="negocio_campana">Start Date</label>
                     <input type="date" class="form-input" name="last_name"  formControlName="fecha_inicio_asset" id="fecha_inicio" placeholder="Pick a date of start"/>
+                    <div class="alert alert-danger" [hidden] = "!error.fecha_inicio_asset">
+                      {{error.fecha_inicio_asset }}
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="negocio_campana">Due Date</label>
                     <input type="date" class="form-input" name="last_name"  formControlName="fecha_finalizacion_asset" id="fecha_inicio" placeholder="Pick a date of end"/>
+                    <div class="alert alert-danger" [hidden] = "!error.fecha_finalizacion_asset">
+                      {{error.fecha_finalizacion_asset }}
+                    </div>
                   </div>
                   <div class="form-group">
                     <input type="file" name="fileAsset" (change)="onFileChange(fileInput.files)" accept="image/png, image/jpeg" #fileInput/>
@@ -38,6 +50,12 @@
                           'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" 
                           placeholder="Upload your file" #path>
                    </div>
+                   <div *ngIf="message" class="alert alert-primary" role="alert">
+                    Please Upload an image File.
+                  </div>
+                  <div *ngIf="noFile" class="alert alert-danger" role="alert">
+                    Please Upload a File.
+                  </div>
                     <div class="form-group">
                       <input type="submit" name="submit" id="submit" class="form-submit" value="Upload"/>
                   </div>

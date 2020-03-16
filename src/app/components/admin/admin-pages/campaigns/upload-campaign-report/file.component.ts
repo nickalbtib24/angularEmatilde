@@ -22,6 +22,7 @@ export class FileComponent implements OnInit {
   public reportForm: FormGroup;
   public formData: FormData;
   public error: Text;
+  public noFile: boolean;
   constructor(
     private formBuilder: FormBuilder,
     private rest: PrincipalService,
@@ -35,6 +36,7 @@ export class FileComponent implements OnInit {
   ngOnInit() { }
 
   public onFileChange(files: any) {
+    this.noFile = false;
     const file: File = files[0];
     this.path.nativeElement.value = file.name;
     if (this.isCSVfile(file.name)) {
@@ -46,12 +48,16 @@ export class FileComponent implements OnInit {
     }
   }
   public onSubmit() {
-    const id = this.Route.snapshot.paramMap.get('id');
-    this.formData.append('campaign', id);
-    this.rest.postCreateReportCampaignFile(this.formData).subscribe(
-      data => this.handleResponse(data),
-      error => this.handleError(error)
-    );
+    if (this.path.nativeElement.value === '') {
+      this.noFile = true;
+    } else {
+      const id = this.Route.snapshot.paramMap.get('id');
+      this.formData.append('campaign', id);
+      this.rest.postCreateReportCampaignFile(this.formData).subscribe(
+        data => this.handleResponse(data),
+        error => this.handleError(error)
+      );
+    }
   }
 
   public handleError(error) {
