@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class TokenService {
 
-  private baseUrl = 'https://ematilde.us-south.cf.appdomain.cloud/api';
+  private baseUrl = 'http://localhost:8000/api';
+
+  //private baseUrl = 'https://ematilde.us-south.cf.appdomain.cloud/api';
 
   private iss = {
     login : `${this.baseUrl}/login`,

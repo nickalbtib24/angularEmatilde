@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PrincipalService } from 'src/app/services/principal.service';
+import { ProgressSpinnerDialogComponent } from 'src/app/components/progress-spinner-dialog/progress-spinner-dialog.component';
+import { Observable } from 'rxjs';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-create-campaign',
@@ -31,10 +34,13 @@ export class CreateCampaignComponent implements OnInit {
 
   public buttonDisabled: boolean;
 
+  public dialogRef: MatDialogRef<ProgressSpinnerDialogComponent>;
+
   constructor(
     private Router: Router,
     private service: PrincipalService,
     private Principal: PrincipalService,
+    private dialog: MatDialog
     ) {
       this.getTipoCampanas();
       this.getClients();
@@ -44,15 +50,23 @@ export class CreateCampaignComponent implements OnInit {
   }
 
   public onSubmit() {
+    const observable = new Observable(this.myObservable);
+    this.showProgressSpinnerUntilExecuted(observable);
     console.log(this.form);
     this.Principal.postCreateCampaign(this.form).subscribe(
-      (data) => this.Router.navigateByUrl('/clients'),
+      (data) => this.handleResponse(),
       (error) => this.handleError(error)
     );
   }
 
   public handleError(error) {
+    this.dialogRef.close();
     this.error = error.error;
+  }
+
+  public handleResponse() {
+    this.dialogRef.close();
+    this.Router.navigateByUrl('/clients');
   }
 
   public getTipoCampanas(): void {
@@ -78,5 +92,19 @@ export class CreateCampaignComponent implements OnInit {
         this.error.lesser = '';
         this.buttonDisabled = false;
     }
+  }
+
+  public myObservable(observer) {
+    setTimeout(() => {
+      observer.next('done waiting for 5 sec');
+      observer.complete();
+    }, 2000);
+  }
+
+  public showProgressSpinnerUntilExecuted(observable: Observable<Object>) {
+    this.dialogRef = this.dialog.open(ProgressSpinnerDialogComponent, {
+      panelClass: 'transparent',
+      disableClose: true
+    });
   }
 }

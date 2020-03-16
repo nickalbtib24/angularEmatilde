@@ -49,7 +49,7 @@ export class SignupComponent implements OnInit {
   public onSubmit() {
     const observable = new Observable(this.myObservable);
     this.showProgressSpinnerUntilExecuted(observable);
-    console.log(this.form.tipo_cliente);
+    console.log(this.form);
     this.Principal.signup(this.form).subscribe(
      (data) => this.handleError(data),
    );
@@ -58,7 +58,7 @@ export class SignupComponent implements OnInit {
   public handleResponse(data) {
     this.ExecuteFunction.sendSuccessMessageToLogIn();
     if (!data.success) {
-      this.handleError(data);
+      //this.handleError(data);
     }
     this.Routers.navigateByUrl('/login');
   }
