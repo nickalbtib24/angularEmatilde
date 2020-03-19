@@ -27,7 +27,7 @@ export class EditProfileComponent implements OnInit {
     telefono_usuario: null,
   };
   public id;
-  public error = [];
+  public error: any = [];
   constructor(
     private Token: TokenService,
     private Rest: PrincipalService,
