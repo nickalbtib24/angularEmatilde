@@ -29,6 +29,20 @@ export class DashboardAssetComponent implements OnInit {
   private dataPostreaction = [];
   private dataCarrouselClicks = [];
   private dataLinkClicks = [];
+
+  // tslint:disable-next-line: max-line-length
+  public toolTipImpressions = 'Impressions are considered the times the ad instance is shown on the screen for the first time. (Example: If a person sees an ad, scroll down, and then return to the same ad, it will count as one impression. If a person sees an ad twice in the same day, it will count as two impressions.) ';
+  // tslint:disable-next-line: max-line-length
+  public toolTipCostPerResult = 'The cost per result indicates how profitable it was to achieve the goals you established in your asset, it is calculated by dividing the total amount spent by the number of results.';
+
+  public toolTipAmountSpent = 'Total estimated amount of money you spent on your asset';
+
+  // tslint:disable-next-line: max-line-length
+  public toolTipLinkClicks = 'The link clicks metric indicates the number of clicks on ad links that direct you to specific destinations or experiences.';
+
+  // tslint:disable-next-line: max-line-length
+  public toolTipReach = 'The reach indicates the number of people who saw your ads at least once, this can be affected by the current budget.';
+
   constructor (
     private Route: ActivatedRoute,
     private Principal: PrincipalService

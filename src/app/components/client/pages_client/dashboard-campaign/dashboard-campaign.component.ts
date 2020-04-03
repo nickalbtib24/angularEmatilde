@@ -4,6 +4,10 @@ import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { ActivatedRoute } from '@angular/router';
 import { PrincipalService } from 'src/app/services/principal.service';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { ProgressSpinnerDialogComponent } from 'src/app/components/progress-spinner-dialog/progress-spinner-dialog.component';
+import { Observable, empty } from 'rxjs';
+import { DatePipe, formatDate } from '@angular/common';
 
 @Component({
   templateUrl: './dashboard-campaign.component.html',
@@ -11,8 +15,8 @@ import { PrincipalService } from 'src/app/services/principal.service';
 })
 export class DashboardCampaignComponent implements OnInit {
 
-  radioModel: string = 'Month';
-
+  public  radioModel = 'Month';
+  public dialogRef: MatDialogRef<ProgressSpinnerDialogComponent>;
   private informs = [];
   private kpis = [];
   private dates = [];
@@ -29,6 +33,10 @@ export class DashboardCampaignComponent implements OnInit {
   public budgetSpent = '0%';
   public styleProgressBudgetSpent = {'width': '0%'};
   public budgetReport = '$0 / $0';
+  public reportingDate = '';
+  public information = false;
+  public alert = false;
+  public range: any;
 
   // tslint:disable-next-line: max-line-length
   public toolTipReach = 'The reach indicates the number of people who saw your ads at least once, this can be affected by the current budget.';
@@ -46,7 +54,9 @@ export class DashboardCampaignComponent implements OnInit {
   public toolTipLinkClicks = 'The link clicks metric indicates the number of clicks on ad links that direct you to specific destinations or experiences.';
   constructor(
     private Route: ActivatedRoute,
-    private Principal: PrincipalService
+    private Principal: PrincipalService,
+    private dialog: MatDialog,
+    private pipe: DatePipe
     ){
     }
 
@@ -778,7 +788,8 @@ public LinkClicksElements = 7;
   };
 
   ngOnInit(): void {
-
+    const observable = new Observable(this.myObservable);
+    this.showProgressSpinnerUntilExecuted(observable);
     this.getCampaignsByUser();
 
     this.ReachOptions.scales.yAxes[0].ticks.max = this.ReachData[0].reach;
@@ -787,40 +798,142 @@ public LinkClicksElements = 7;
     this.CostPerResultOptions.scales.yAxes[0].ticks.max = this.CostPerResultData[0].CostPerResult;
     this.AmountSpentOptions.scales.yAxes[0].ticks.max = this.AmountSpentData[0].ammount_spent;
     this.LinkClicksOptions.scales.yAxes[0].ticks.max = this.LinkClicksData[0].link_clicks;
-
   }
 
   getCampaignsByUser() {
+    // tslint:disable-next-line: prefer-const
     let campaign = this.Route.snapshot.paramMap.get('id');
     this.Principal.getCampaignInform(campaign).subscribe((data: any[]) => {
       this.kpis = data;
-      console.log(data);
+      this.dialog.closeAll();
       this.prepareData(this.kpis);
     });
   }
 
   prepareData(kpis) {
-    for (let kpi of kpis) {
-      this.dates.push(kpi.date);
-      this.dataReach.push(kpi.reach);
-      this.dataBudget.push(kpi.budget);
-      this.dataResult.push(kpi.result);
-      this.dataImpressions.push(kpi.impressions);
-      this.dataAmountSpent.push(kpi.ammount_spent);
-      this.dataLinkClicks.push(kpi.link_clicks);
-      this.dataCostPerResult.push(kpi.cost_per_result);
-      this.dataLandingPageViews.push(kpi.landing_page_views);
-      this.dataCostPerLandingPageView.push(kpi.cost_per_landing_page_view);
-      this.dataLinkClicks2.push(kpi.campana.expected_link_clicks);
+    if (kpis.length === 0) {
+      this.information = false;
+      this.alert = true;
+    } else {
+      this.information = true;
+      for (let kpi of kpis) {
+        this.dates.push(kpi.fecha_cracion);
+        this.dataReach.push(kpi.reach);
+        this.dataBudget.push(kpi.budget);
+        this.dataResult.push(kpi.result);
+        this.dataImpressions.push(kpi.impressions);
+        this.dataAmountSpent.push(kpi.ammount_spent);
+        this.dataLinkClicks.push(kpi.link_clicks);
+        this.dataCostPerResult.push(kpi.cost_per_result);
+        this.dataLandingPageViews.push(kpi.landing_page_views);
+        this.dataCostPerLandingPageView.push(kpi.cost_per_landing_page_view);
+        this.dataLinkClicks2.push(kpi.campana.expected_link_clicks);
+      }
+      const percentageBudget = kpis[kpis.length - 1].budget_spent;
+      const budgetCamp = kpis[kpis.length - 1].campana.expected_budget;
+      const budgetRep = kpis[kpis.length - 1].ammount_spent;
+      this.reportingDate = kpis[kpis.length - 1].date;
+      this.styleProgressBudgetSpent = {'width' : percentageBudget + '%'};
+      this.budgetSpent = percentageBudget + '%';
+      this.budgetReport = '$' + budgetRep + ' / ' + budgetCamp + '$';
+      const percentageLinkClicks = kpis[kpis.length - 1].link_clicks;
     }
-    const percentageBudget = kpis[kpis.length - 1].budget_spent;
-    const budgetCamp = kpis[kpis.length - 1].campana.expected_budget;
-    const budgetRep = kpis[kpis.length - 1].ammount_spent;
-    this.styleProgressBudgetSpent = {'width' : percentageBudget + '%'};
-    this.budgetSpent = percentageBudget + '%';
-    this.budgetReport = '$' + budgetRep + ' / ' + budgetCamp + '$';
+  }
 
-    const percentageLinkClicks = kpis[kpis.length - 1].link_clicks;
+  public filterDates() {
+    const newDates = new Array();
+    const date1 = new Date(this.range.begin);
+    const date2 = new Date(this.range.end);
+    const newDataReach = new Array();
+    const newDataResults = new Array();
+    const newDataImpressions = new Array();
+    const newDataCostPerResult = new Array();
+    const newDataAmmountSpent = new Array();
+    const newDataLandingPageViews = new Array();
+    const newDataCostPerLandingPageView = new Array();
+    const newDataLinkClicks = new Array();
+    while (date1 <= date2) {
+        const day: string = this.addZeroToNumber(date1.getDate().toString());
+        const month: string = this.addZeroToNumber((date1.getMonth() + 1).toString());
+        const year: string = date1.getFullYear().toString();
+        const dateFinal = year + '-' + month + '-' + day;
+        newDates.push(dateFinal);
+        date1.setDate(date1.getDate() + 1);
+      }
+    let pos = 0;
+    // tslint:disable-next-line: prefer-for-of
+    for (let j = 0; j < newDates.length ; j++) {
+      // tslint:disable-next-line: prefer-for-of
+      const date = newDates[j];
+      // tslint:disable-next-line: prefer-for-of
+      for (let i = 0; i < this.dates.length ; i++) {
+        const actualDate = this.dates[i];
+        if (date === actualDate) {
+          console.log(date + ' - ' + actualDate);
+          console.log(this.dataReach[j]);
+          newDataReach[j] = this.dataReach[pos];
+          newDataResults[j] = this.dataResult[pos];
+          newDataImpressions[j] = this.dataImpressions[pos];
+          newDataCostPerResult[j] = this.dataCostPerResult[pos];
+          newDataAmmountSpent[j] = this.dataAmountSpent[pos];
+          newDataLandingPageViews[j] = this.dataLandingPageViews[pos];
+          newDataCostPerLandingPageView[j] = this.dataCostPerLandingPageView[pos];
+          newDataLinkClicks[j] = this.dataLinkClicks[pos];
+          pos ++;
+        }
+      }
+    }
+    this.fillBlankData(newDataReach);
+    this.fillBlankData(newDataResults);
+    this.fillBlankData(newDataImpressions);
+    this.fillBlankData(newDataCostPerResult);
+    this.fillBlankData(newDataLandingPageViews);
+    this.fillBlankData(newDataCostPerLandingPageView);
+    this.fillBlankData(newDataLinkClicks);
+
+    this.ReachData[0].data = newDataReach;
+    this.ResultData[0].data = newDataResults;
+    this.ImpressionsData[0].data = newDataImpressions;
+    this.CostPerResultData[0].data = newDataCostPerResult;
+    this.LandingPageViewsData[0].data = newDataLandingPageViews;
+    this.CostPerLandingPageViewData[0].data = newDataCostPerLandingPageView;
+    this.LinkClicksData[0].data = newDataLinkClicks;
+
+    this.ReachLabels = newDates;
+    this.ResultLabels = newDates;
+    this.ImpressionsLabels = newDates;
+    this.CostPerResultLabels = newDates;
+    this.LandingPageViewsLabels = newDates;
+    this.CostPerLandingPageViewLabels = newDates;
+    this.LinkClicksLabels = newDates;
+  }
+  public fillBlankData(array: Array<any>) {
+    for (let x = 0; x < array.length ; x ++) {
+    const actual = array[x];
+    const before = array[x - 1];
+    console.log(typeof(actual));
+    if (actual === undefined) {
+      console.log(actual);
+      if (before !== undefined) {
+        array[x] = before;
+      }
+    }
+  }
+  }
+
+  public addZeroToNumber(number: string): string{
+    let answ = '';
+    if (number.length === 1) {
+      answ = '0' + number;
+    } else {
+      answ = number;
+    }
+    return answ;
+  }
+
+  public print() {
+    console.log(this.range);
+    this.filterDates();
   }
 
   public findMaxOfArray(arr: any[]) {
@@ -833,4 +946,19 @@ public LinkClicksElements = 7;
     console.log(max);
     return max;
   }
+
+  public myObservable(observer) {
+    setTimeout(() => {
+      observer.next('done waiting for 5 sec');
+      observer.complete();
+    }, 2000);
+  }
+
+   public showProgressSpinnerUntilExecuted(observable: Observable<Object>) {
+    this.dialogRef = this.dialog.open(ProgressSpinnerDialogComponent, {
+      panelClass: 'transparent',
+      disableClose: true
+    });
+  }
+
 }
