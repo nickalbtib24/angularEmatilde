@@ -103,6 +103,10 @@ export class DashboardCampaignComponent implements OnInit {
           callback: function(value: any) {
             return value;
           }
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Date'
         }
       }],
       yAxes: [{
@@ -111,6 +115,10 @@ export class DashboardCampaignComponent implements OnInit {
           maxTicksLimit: 5,
           stepSize: Math.ceil(250 / 5),
           max: 0
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Number of People'
         }
       }]
     },
@@ -185,22 +193,31 @@ export class DashboardCampaignComponent implements OnInit {
         ticks: {
           fontSize: 8,
           fontColor: 'white',
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Date',
+          fontColor: 'white',
         }
-
       }],
       yAxes: [{
-        display: false,
+        display: true,
         gridLines: {
           color: 'transparent',
           zeroLineColor: 'transparent'
         },
         ticks: {
           fontSize: 8,
-          fontColor: 'white',
+          fontColor: 'transparent',
           display: true,
           min: 0,
           max: this.dataReach.length,
         },
+        scaleLabel: {
+          display: true,
+          fontColor: 'white',
+          labelString: 'Dollars',
+        }
       }],
     },
     elements: {
@@ -258,15 +275,28 @@ export class DashboardCampaignComponent implements OnInit {
         ticks: {
           fontSize: 8,
           fontColor: 'white',
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Date',
+          fontColor: 'white',
         }
 
       }],
       yAxes: [{
-        display: false,
+        display: true,
+        gridLines: {
+          color: 'transparent',
+          zeroLineColor: 'transparent'
+        },
         ticks: {
           display: false,
           min: 0,
           max: 0,
+        }, scaleLabel: {
+          display: true,
+          labelString: 'Purchases',
+          fontColor: 'white',
         }
       }],
     },
@@ -324,11 +354,26 @@ export class DashboardCampaignComponent implements OnInit {
         ticks: {
           fontSize: 8,
           fontColor: 'white',
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Date',
+          fontColor: 'white',
         }
       }],
       yAxes: [{
-        display: false,
-        max: 0
+        display: true,
+        gridLines: {
+          color: 'transparent',
+          zeroLineColor: 'transparent'
+        },
+        ticks: {
+          display: false,
+        }, scaleLabel: {
+          display: true,
+          labelString: 'Purchases',
+          fontColor: 'white',
+        }
       }]
     },
     elements: {
@@ -363,7 +408,7 @@ export class DashboardCampaignComponent implements OnInit {
   public CostPerResultData: Array<any> = [
     {
       data: this.dataCostPerResult,
-      label: 'Current'
+      label: 'Cost Per Result'
     }
   ];
   /* tslint:disable:max-line-length */
@@ -393,6 +438,9 @@ export class DashboardCampaignComponent implements OnInit {
           callback: function(value: any) {
             return value;
           }
+        }, scaleLabel: {
+          display: true,
+          labelString: 'Date'
         }
       }],
       yAxes: [{
@@ -401,6 +449,9 @@ export class DashboardCampaignComponent implements OnInit {
           maxTicksLimit: 5,
           stepSize: Math.ceil(250 / 5),
           max: 0
+        }, scaleLabel: {
+          display: true,
+          labelString: 'USD'
         }
       }]
     },
@@ -444,7 +495,7 @@ export class DashboardCampaignComponent implements OnInit {
    public AmountSpentData: Array<any> = [
     {
       data: this.dataAmountSpent,
-      label: 'AmmountSpent'
+      label: 'Ammount Spent'
     }
   ];
   public AmountSpentLabels: Array<any> = this.dates;
@@ -473,22 +524,31 @@ export class DashboardCampaignComponent implements OnInit {
         ticks: {
           fontSize: 8,
           fontColor: 'white',
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Date',
+          fontColor: 'white'
         }
-
       }],
       yAxes: [{
-        display: false,
+        display: true,
         gridLines: {
           color: 'transparent',
           zeroLineColor: 'transparent'
         },
         ticks: {
           fontSize: 8,
-          fontColor: 'white',
+          fontColor: 'transparent',
           display: true,
           min: 0,
           max: 0,
         },
+        scaleLabel: {
+          display: true,
+          labelString: 'USD',
+          fontColor: 'white'
+        }
       }],
     },
     elements: {
@@ -519,7 +579,7 @@ export class DashboardCampaignComponent implements OnInit {
   public LandingPageViewsData: Array<any> = [
     {
       data: this.dataLandingPageViews,
-      label: 'Video Clicks'
+      label: 'Landing Page Views'
     }
   ];
   public LandingPageViewsLabels: Array<any> = this.dates;
@@ -546,15 +606,29 @@ export class DashboardCampaignComponent implements OnInit {
         ticks: {
           fontSize: 8,
           fontColor: 'white',
+        }, scaleLabel: {
+          display: true,
+          labelString: 'Date',
+          fontColor: 'white'
         }
 
       }],
       yAxes: [{
-        display: false,
+        display: true,
+        gridLines: {
+          color: 'transparent',
+          zeroLineColor: 'transparent'
+        },
         ticks: {
           display: false,
+          labelColor: 'transparent',
           min: 0,
           max: 100,
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Page Views',
+          fontColor: 'white'
         }
       }],
     },
@@ -585,7 +659,7 @@ export class DashboardCampaignComponent implements OnInit {
   public CostPerLandingPageViewData: Array<any> = [
     {
       data: this.dataCostPerLandingPageView,
-      label: 'Post Reaction'
+      label: 'Cost Per Landing Page View'
     }
   ];
   public CostPerLandingPageViewLabels: Array<any> = this.dates;
@@ -612,10 +686,30 @@ export class DashboardCampaignComponent implements OnInit {
         ticks: {
           fontSize: 8,
           fontColor: 'white',
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Date',
+          fontColor: 'white'
         }
       }],
       yAxes: [{
-        display: false
+        display: true,
+        gridLines: {
+          color: 'transparent',
+          zeroLineColor: 'transparent'
+        },
+        ticks: {
+          display: false,
+          labelColor: 'transparent',
+          min: 0,
+          max: 100,
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'USD',
+          fontColor: 'white'
+        }
       }]
     },
     elements: {
@@ -650,11 +744,11 @@ public LinkClicksElements = 7;
   public LinkClicksData: Array<any> = [
     {
       data: this.LinkClicksData1,
-      label: 'Current'
+      label: 'Link Clicks'
     },
     {
       data: this.LinkClicksData2,
-      label: 'Expected'
+      label: 'Expected Link Clicks'
     }
   ];
   /* tslint:disable:max-line-length */
@@ -684,6 +778,9 @@ public LinkClicksElements = 7;
           callback: function(value: any) {
             return value;
           }
+        },scaleLabel: {
+          display: true,
+          labelString: 'Date'
         }
       }],
       yAxes: [{
@@ -692,6 +789,9 @@ public LinkClicksElements = 7;
           maxTicksLimit: 5,
           stepSize: Math.ceil(250 / 5),
           max: 250
+        }, scaleLabel: {
+          display: true,
+          labelString: 'Link Clicks'
         }
       }]
     },
@@ -835,7 +935,7 @@ public LinkClicksElements = 7;
       this.reportingDate = kpis[kpis.length - 1].date;
       this.styleProgressBudgetSpent = {'width' : percentageBudget + '%'};
       this.budgetSpent = percentageBudget + '%';
-      this.budgetReport = '$' + budgetRep + ' / ' + budgetCamp + '$';
+      this.budgetReport = '$' + Math.floor(budgetRep) + ' / $' + budgetCamp;
       const percentageLinkClicks = kpis[kpis.length - 1].link_clicks;
     }
   }
