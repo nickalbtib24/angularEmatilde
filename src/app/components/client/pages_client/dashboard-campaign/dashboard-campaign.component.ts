@@ -6,8 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { PrincipalService } from 'src/app/services/principal.service';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ProgressSpinnerDialogComponent } from 'src/app/components/progress-spinner-dialog/progress-spinner-dialog.component';
-import { Observable, empty } from 'rxjs';
-import { DatePipe, formatDate } from '@angular/common';
+import { Observable } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 @Component({
   templateUrl: './dashboard-campaign.component.html',
@@ -56,7 +56,6 @@ export class DashboardCampaignComponent implements OnInit {
     private Route: ActivatedRoute,
     private Principal: PrincipalService,
     private dialog: MatDialog,
-    private pipe: DatePipe
     ){
     }
 
@@ -70,10 +69,6 @@ export class DashboardCampaignComponent implements OnInit {
     {
       data: this.dataReach,
       label: 'Reach'
-    },
-    {
-      data: this.ReachData3,
-      label: 'Expected'
     }
   ];
   /* tslint:disable:max-line-length */
@@ -96,9 +91,6 @@ export class DashboardCampaignComponent implements OnInit {
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
-        gridLines: {
-          drawOnChartArea: false,
-        },
         ticks: {
           callback: function(value: any) {
             return value;
@@ -126,12 +118,6 @@ export class DashboardCampaignComponent implements OnInit {
       line: {
         borderWidth: 2
       },
-      point: {
-        radius: 0,
-        hitRadius: 10,
-        hoverRadius: 4,
-        hoverBorderWidth: 3,
-      }
     },
     legend: {
       display: true
@@ -702,8 +688,6 @@ export class DashboardCampaignComponent implements OnInit {
         ticks: {
           display: false,
           labelColor: 'transparent',
-          min: 0,
-          max: 100,
         },
         scaleLabel: {
           display: true,
@@ -739,7 +723,6 @@ export class DashboardCampaignComponent implements OnInit {
 public LinkClicksElements = 7;
   public LinkClicksData1: Array<number> = this.dataLinkClicks;
   public LinkClicksData2: Array<number> = this.dataLinkClicks2;
-  public LinkClicksData3: Array<number> = [];
 
   public LinkClicksData: Array<any> = [
     {
@@ -892,12 +875,13 @@ public LinkClicksElements = 7;
     this.showProgressSpinnerUntilExecuted(observable);
     this.getCampaignsByUser();
 
-    this.ReachOptions.scales.yAxes[0].ticks.max = this.ReachData[0].reach;
-    this.BudgetOptions.scales.yAxes[0].ticks.max = this.BudgetData[0].budget;
-    this.ResultOptions.scales.yAxes[0].ticks.max = this.ResultData[0].result;
-    this.CostPerResultOptions.scales.yAxes[0].ticks.max = this.CostPerResultData[0].CostPerResult;
-    this.AmountSpentOptions.scales.yAxes[0].ticks.max = this.AmountSpentData[0].ammount_spent;
-    this.LinkClicksOptions.scales.yAxes[0].ticks.max = this.LinkClicksData[0].link_clicks;
+    this.ReachOptions.scales.yAxes[0].ticks.max = undefined;
+    this.BudgetOptions.scales.yAxes[0].ticks.max = undefined;
+    this.ResultOptions.scales.yAxes[0].ticks.max = undefined;
+    this.CostPerResultOptions.scales.yAxes[0].ticks.max = undefined;
+    this.AmountSpentOptions.scales.yAxes[0].ticks.max = undefined;
+    this.LinkClicksOptions.scales.yAxes[0].ticks.max = undefined;
+    this.LandingPageViewsOptions.scales.yAxes[0].ticks.max = undefined;
   }
 
   getCampaignsByUser() {
@@ -952,6 +936,9 @@ public LinkClicksElements = 7;
     const newDataLandingPageViews = new Array();
     const newDataCostPerLandingPageView = new Array();
     const newDataLinkClicks = new Array();
+    const newDataLinkClicks2 = new Array();
+    const newDataBudget = new Array();
+
     while (date1 <= date2) {
         const day: string = this.addZeroToNumber(date1.getDate().toString());
         const month: string = this.addZeroToNumber((date1.getMonth() + 1).toString());
@@ -969,8 +956,6 @@ public LinkClicksElements = 7;
       for (let i = 0; i < this.dates.length ; i++) {
         const actualDate = this.dates[i];
         if (date === actualDate) {
-          console.log(date + ' - ' + actualDate);
-          console.log(this.dataReach[j]);
           newDataReach[j] = this.dataReach[pos];
           newDataResults[j] = this.dataResult[pos];
           newDataImpressions[j] = this.dataImpressions[pos];
@@ -979,6 +964,8 @@ public LinkClicksElements = 7;
           newDataLandingPageViews[j] = this.dataLandingPageViews[pos];
           newDataCostPerLandingPageView[j] = this.dataCostPerLandingPageView[pos];
           newDataLinkClicks[j] = this.dataLinkClicks[pos];
+          newDataLinkClicks2[j] = this.dataLinkClicks2[pos];
+          newDataBudget[j] = this.dataBudget[pos];
           pos ++;
         }
       }
@@ -990,6 +977,9 @@ public LinkClicksElements = 7;
     this.fillBlankData(newDataLandingPageViews);
     this.fillBlankData(newDataCostPerLandingPageView);
     this.fillBlankData(newDataLinkClicks);
+    this.fillBlankData(newDataLinkClicks2);
+    this.fillBlankData(newDataBudget);
+    this.fillBlankData(newDataAmmountSpent);
 
     this.ReachData[0].data = newDataReach;
     this.ResultData[0].data = newDataResults;
@@ -998,6 +988,9 @@ public LinkClicksElements = 7;
     this.LandingPageViewsData[0].data = newDataLandingPageViews;
     this.CostPerLandingPageViewData[0].data = newDataCostPerLandingPageView;
     this.LinkClicksData[0].data = newDataLinkClicks;
+    this.LinkClicksData[1].data = newDataLinkClicks2;
+    this.BudgetData[0].data = newDataBudget;
+    this.AmountSpentData[0].data = newDataAmmountSpent;
 
     this.ReachLabels = newDates;
     this.ResultLabels = newDates;
@@ -1006,14 +999,14 @@ public LinkClicksElements = 7;
     this.LandingPageViewsLabels = newDates;
     this.CostPerLandingPageViewLabels = newDates;
     this.LinkClicksLabels = newDates;
+    this.BudgetLabels = newDates;
+    this.AmountSpentLabels = newDates;
   }
   public fillBlankData(array: Array<any>) {
     for (let x = 0; x < array.length ; x ++) {
     const actual = array[x];
     const before = array[x - 1];
-    console.log(typeof(actual));
     if (actual === undefined) {
-      console.log(actual);
       if (before !== undefined) {
         array[x] = before;
       }
@@ -1032,7 +1025,6 @@ public LinkClicksElements = 7;
   }
 
   public print() {
-    console.log(this.range);
     this.filterDates();
   }
 
@@ -1043,7 +1035,6 @@ public LinkClicksElements = 7;
         max = el;
       }
     }
-    console.log(max);
     return max;
   }
 

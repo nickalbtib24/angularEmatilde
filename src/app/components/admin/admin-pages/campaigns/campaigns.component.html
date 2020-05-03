@@ -3,7 +3,7 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-header">
-            <i class="fa fa-align-justify"></i> Campaigns of Client
+            <i class="fa fa-align-justify"></i> Campaigns of Customer
           </div>
           <div class="card-body">
           <div style="padding-bottom: 2%;">
@@ -12,11 +12,11 @@
             <table class="table table-bordered table-striped table-sm">
               <thead>
                 <tr>
-                  <th>ID Campaign</th>
+                  <th>Campaign ID</th>
                   <th>Campaign Name</th>
                   <th>Start Date</th>
                   <th>State</th>
-                  <th>Edit Dashboard</th>
+                  <th>Upload Report</th>
                   <th>Add Asset</th>
                   <th>View Assets</th>
                 </tr>
@@ -29,7 +29,7 @@
                   <td>{{ campaign.fecha_inicio_campana }}</td>
                   <td>Active</td>
                   <td>
-                    <button (click)="getSelectedCampaign(campaign.id)" class="btn btn-pill btn-block btn-info">Edit Dashboard</button>
+                    <button (click)="getSelectedCampaign(campaign.id)" class="btn btn-pill btn-block btn-info">Upload Report</button>
                   </td>
                   <td>
                     <button (click)="redirectAddAsset(campaign.id)" class="btn btn-pill btn-block btn-info">Add Asset</button>
@@ -40,22 +40,21 @@
                 </tr>
               </tbody>
             </table>
-            <nav>
-              <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-              </ul>
-            </nav>
           </div>
         </div>
       </div>
       <!--/.col-->
     </div>
     <!--/.row-->
+  </div>
+  <div [hidden] = "information" class="jumbotron vertical-center">
+    <div  class="align-middle">
+      <div class="container">
+        <div class="col">
+          <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">This client does not have campaigns yet!</h4>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>

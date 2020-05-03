@@ -3,17 +3,15 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Clients
+          <i class="fa fa-align-justify"></i> Customers
         </div>
         <div class="card-body">
           <table class="table table-bordered table-striped table-sm">
             <thead>
               <tr>
-                <th>ID Client</th>
-                <th>Name Client</th>
+                <th>Customer ID</th>
+                <th>Customer Name</th>
                 <th>Company Name</th>
-                <th>More Info</th>
-                <th>Facebook Page</th>
                 <th>Campaigns</th>
               </tr>
             </thead>
@@ -23,33 +21,26 @@
                 <td>{{ client.nombre_usuario +" "+client.apellido_usuario }}</td>
                 <td>{{ client.empresa_usuario }}</td>
                 <td>
-                  <button type="button" class="btn btn-pill btn-block btn-info">More Info</button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-pill btn-block btn-info">Facebook</button>
-                </td>
-                <td>
                   <button (click)="getSelectedCampaignsByUser(client.id)" class="btn btn-pill btn-block btn-info">Campaigns</button>
                 </td>
               </tr>
             </tbody>
           </table>
-          <nav>
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item active">
-                <a class="page-link" href="#">1</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </nav>
         </div>
       </div>
     </div>
     <!--/.col-->
   </div>
   <!--/.row-->
+</div>
+<div [hidden] = "information" class="jumbotron vertical-center">
+  <div  class="align-middle">
+    <div class="container">
+      <div class="col">
+        <div class="alert alert-warning" role="alert">
+          <h4 class="alert-heading">You do not have clients yet!</h4>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

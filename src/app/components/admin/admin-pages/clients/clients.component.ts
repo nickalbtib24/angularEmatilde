@@ -10,25 +10,30 @@ import { Router } from '@angular/router';
 export class ClientsComponent implements OnInit {
 
   public clients: any = [];
+  public information = true;
+
   constructor(
-    private Principal:PrincipalService,
-    private Router:Router
+    private Principal: PrincipalService,
+    private Router: Router
   ) { }
 
   ngOnInit() {
-    this.loadClients()
+    this.loadClients();
   }
 
-  getSelectedCampaignsByUser(client){
-    this.Router.navigate(['/campaigns-client',client])
+  getSelectedCampaignsByUser(client) {
+    this.Router.navigate(['/campaigns-client', client]);
 
   }
 
   loadClients(){
-    this.Principal.getClients().subscribe((data: any[])=>{
+    this.Principal.getClients().subscribe((data: any[]) => {
       console.log(data);
       this.clients = data;
-    })
+      if (this.clients.length === 0) {
+        this.information = false;
+      }
+    });
   }
 
 }

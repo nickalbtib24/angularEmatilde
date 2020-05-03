@@ -13,7 +13,6 @@ export class PrincipalService {
   constructor(
     private http: HttpClient) { }
 
-
   public login(data) {
     return this.http.post(this.baseUrl + '/login', data);
   }

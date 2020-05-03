@@ -9,11 +9,11 @@
           <table class="table table-bordered table-striped table-sm">
             <thead>
               <tr>
-                <th>ID Campaign</th>
-                <th>Name Campaign</th>
+                <th>Campaign ID</th>
+                <th>Campaign Name</th>
                 <th>Started At</th>
                 <th>Finishes At</th>
-                <th>Information</th>
+                <th>Reports</th>
                 <th>Assets</th>
               </tr>
             </thead>
@@ -24,7 +24,7 @@
                 <td>{{campaign.fecha_inicio_campana}}</td>
                 <td>{{campaign.fecha_inicio_campana}}</td>
                 <td>
-                    <button class="btn btn-pill btn-block btn-info" (click)="getSelectedCampaign(campaign.id)">Info</button>
+                    <button class="btn btn-pill btn-block btn-info" (click)="getSelectedCampaign(campaign.id)">View Reports</button>
                 </td>
                 <td>
                   <button class="btn btn-pill btn-block btn-info" (click)="getAssetsCampaign(campaign.id)" >Assets</button>
@@ -32,22 +32,22 @@
               </tr>
             </tbody>
           </table>
-          <nav>
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item active">
-                <a class="page-link" href="#">1</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </nav>
         </div>
       </div>
     </div>
     <!--/.col-->
   </div>
   <!--/.row-->
+</div>
+<div [hidden] = "information" class="jumbotron vertical-center">
+  <div  class="align-middle">
+    <div class="container">
+      <div class="col">
+        <div class="alert alert-warning" role="alert">
+          <h4 class="alert-heading">You do not have campaigns yet!</h4>
+          <p>Please contact your ad manager.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

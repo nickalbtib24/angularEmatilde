@@ -29,8 +29,13 @@ import { AddReportAssetComponent } from './components/admin-pages/assets/add-rep
 const appRoutes: Routes = [
 
   { path: '',
-    redirectTo: '/login',
+    component: LoginComponent,
     pathMatch: 'full'
+  },
+  {
+    path: '',
+    component: LandingPageComponent,
+    canActivate: [AfterLoginService, AuthorizationClientService]
   },
   {
     path: 'login',
@@ -59,7 +64,8 @@ const appRoutes: Routes = [
     component: DashboardAssetComponent,
     canActivate: [AfterLoginService]
 
-  },
+  }
+  ,
   {
     path: 'dashboard-asset/:id',
     component: DashboardAssetComponent,

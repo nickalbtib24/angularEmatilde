@@ -12,6 +12,7 @@ export class CampaignsComponent implements OnInit {
 
   private client = null;
   public campaigns = [];
+  public information = true;
 
   constructor(
     private Route: ActivatedRoute,
@@ -21,9 +22,12 @@ export class CampaignsComponent implements OnInit {
 
   getCampaignsByClient() {
     this.client = this.Route.snapshot.paramMap.get('id');
-    this.Principal.getCampaignsByUser(this.client).subscribe((data: any[])=>{
+    this.Principal.getCampaignsByUser(this.client).subscribe((data: any[]) => {
       this.campaigns = data;
-    })
+      if (this.campaigns.length === 0) {
+        this.information = false;
+      }
+    });
   }
 
   ngOnInit() {
