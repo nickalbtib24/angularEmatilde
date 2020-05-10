@@ -65,8 +65,8 @@ export class EditProfileComponent implements OnInit {
 
   public handleError(error) {
     if (error.error) {
-      console.log(error.error.error);
-      this.error = error.error.error;
+      console.log(error.error);
+      this.error = error.error;
     }
   }
   ngOnInit() {
