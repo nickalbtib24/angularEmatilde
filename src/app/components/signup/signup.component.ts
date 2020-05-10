@@ -49,7 +49,6 @@ export class SignupComponent implements OnInit {
   public onSubmit() {
     const observable = new Observable(this.myObservable);
     this.showProgressSpinnerUntilExecuted(observable);
-    console.log(this.form);
     this.Principal.signup(this.form).subscribe(
      (data) => this.handleError(data),
    );

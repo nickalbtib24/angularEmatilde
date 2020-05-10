@@ -64,7 +64,10 @@ export class EditProfileComponent implements OnInit {
   }
 
   public handleError(error) {
-    this.error = error.error;
+    if (error.error) {
+      console.log(error.error.error);
+      this.error = error.error.error;
+    }
   }
   ngOnInit() {
     const observable = new Observable(this.myObservable);
